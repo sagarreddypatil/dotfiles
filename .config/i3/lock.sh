@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 
-tmpbg='/tmp/screen.png'
-rm $tmpbg
+# export XSECURELOCK_SAVER=saver_mpv
+# export XSECURELOCK_LIST_VIDEOS_COMMAND='feh --zoom=fill -F ~/Pictures/render.png'
+# export XSECURELOCK_NO_COMPOSITE=1
 
-scrot "$tmpbg"
-convert "$tmpbg" -scale 10% -scale 1000% "$tmpbg"
-# i3lock -i "$tmpbg"
-XSECURELOCK_SAVER=~/.config/i3/locksaver.sh xsecurelock
+xsecurelock
