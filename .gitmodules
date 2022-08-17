@@ -1,4 +1,0 @@
-[submodule ".config/polybar/brightnessctl-polybar"]
-	path = .config/polybar/brightnessctl-polybar
-	url = https://github.com/pim-wtf/brightnessctl-polybar.git
-	shallow = true
