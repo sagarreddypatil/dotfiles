@@ -21,3 +21,4 @@ touchpad = "Elan Touchpad"
 xinput_cmd(touchpad, "Tapping Enabled", 1)
 xinput_cmd(touchpad, "Natural Scrolling Enabled", 1)
 xinput_cmd(touchpad, "Click Method Enabled", [0, 1])
+xinput_cmd(touchpad, "Scrolling Pixel Distance", 50)
