@@ -118,6 +118,10 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+pussh () {
+    ssh patilsr@${1:-data}.cs.purdue.edu
+}
+
 export PATH="$HOME/aliases:$PATH"
 
 # alias neofetch=fastfetch
@@ -125,6 +129,8 @@ export PATH="$HOME/aliases:$PATH"
 fortune | cowsay | lolcat
 
 alias fixwifi="sudo systemctl restart NetworkManager"
-alias fixmouse="sudo modprobe -r psmouse && sudo modprobe psmouse"
+alias fixmouse="sudo modprobe -r psmouse && sudo modprobe psmouse && ./.config/i3/libinput.py"
 alias activate="source ./venv/bin/activate"
 alias dotfiles='/usr/bin/git --git-dir=/home/sagar/.dotfiles/ --work-tree=/home/sagar'
+
+
