@@ -241,4 +241,6 @@ for_window [title="^Steam Keyboard$"] floating enable
 
 # open thunar as floating
 for_window [class="Thunar"] floating enable resize shrink width 360 px resize shrink height 480 px
+# open nemo as floating
+for_window [class="Nemo"] floating enable resize shrink width 360 px resize shrink height 480 px
 
