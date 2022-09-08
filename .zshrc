@@ -133,4 +133,4 @@ alias fixmouse="sudo modprobe -r psmouse && sudo modprobe psmouse && ./.config/i
 alias activate="source ./venv/bin/activate"
 alias dotfiles='/usr/bin/git --git-dir=/home/sagar/.dotfiles/ --work-tree=/home/sagar'
 
-
+alias sl="sl -e"
