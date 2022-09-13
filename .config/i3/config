@@ -93,7 +93,7 @@ bindsym $win+s exec maim -s --format png | xclip -selection clipboard -t image/p
 # bindsym $mod+l exec slock
 
 # start dmenu (a program launcher)
-bindsym $mod+p exec --no-startup-id "rofi -show combi -modes combi -combi-modes 'window,drun,run' -show-icons -show drun -display-drun '' -location 6"
+bindsym $mod+p exec --no-startup-id "rofi -show-icons -show drun -display-drun '' -location 6"
 # A more modern dmenu replacement is rofi:
 # bindsym $mod+p exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
