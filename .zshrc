@@ -131,7 +131,7 @@ export PATH="$HOME/aliases:$PATH"
 fortune | cowsay | lolcat
 
 alias fixwifi="sudo systemctl restart NetworkManager"
-alias fixmouse="sudo modprobe -r psmouse && sudo modprobe psmouse && ./.config/i3/libinput.py"
+alias fixmouse="sudo modprobe -r psmouse && sudo modprobe psmouse && sleep 1 && ~/.config/i3/libinput.py"
 alias activate="source ./venv/bin/activate"
 alias dotfiles='/usr/bin/git --git-dir=/home/sagar/.dotfiles/ --work-tree=/home/sagar'
 
