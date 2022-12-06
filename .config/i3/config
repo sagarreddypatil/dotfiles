@@ -46,9 +46,9 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock -- $HOME/.config/i3/lock.sh
+set $Locker $HOME/.config/i3/lock.sh
 
-set $Locker ~/.config/i3/lock.sh
+exec --no-startup-id xss-lock -- $Locker
 bindsym $win+l exec --no-startup-id $Locker
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
