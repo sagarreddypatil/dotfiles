@@ -14,6 +14,7 @@ application/x-extension-xht=firefox.desktop;
 application/pdf=firefox.desktop;
 image/png=org.gnome.gThumb.desktop;
 text/csv=visual-studio-code.desktop;
+text/x-python=code.desktop;
 
 [Default Applications]
 image/jpeg=org.gnome.gThumb.desktop
@@ -33,3 +34,4 @@ x-scheme-handler/postman=Postman.desktop
 image/png=org.gnome.gThumb.desktop
 inode/directory=nemo.desktop
 text/csv=visual-studio-code.desktop
+text/x-python=code.desktop
