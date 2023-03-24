@@ -1,5 +1,5 @@
 [Added Associations]
-text/plain=visual-studio-code.desktop;
+text/plain=visual-studio-code.desktop;org.gnome.gedit.desktop;
 image/jpeg=org.gnome.gThumb.desktop;
 x-scheme-handler/http=firefox.desktop;
 x-scheme-handler/https=firefox.desktop;
@@ -15,6 +15,7 @@ application/pdf=firefox.desktop;
 image/png=org.gnome.gThumb.desktop;
 text/csv=visual-studio-code.desktop;
 text/x-python=code.desktop;
+image/gif=org.gnome.gThumb.desktop;
 
 [Default Applications]
 image/jpeg=org.gnome.gThumb.desktop
@@ -35,3 +36,5 @@ image/png=org.gnome.gThumb.desktop
 inode/directory=nemo.desktop
 text/csv=visual-studio-code.desktop
 text/x-python=code.desktop
+text/plain=org.gnome.gedit.desktop
+image/gif=org.gnome.gThumb.desktop

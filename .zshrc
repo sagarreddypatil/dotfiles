@@ -102,7 +102,9 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH="$HOME/.local/bin/:$PATH"
 
-alias open='xdg-open'
+open() {
+	nohup xdg-open $1 </dev/null >/dev/null 2>&1 &; disown
+}
 
 
 # >>> conda initialize >>>
