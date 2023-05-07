@@ -130,8 +130,6 @@ export PATH="$HOME/aliases:$PATH"
 
 # alias neofetch=fastfetch
 
-fortune | cowsay | lolcat
-
 alias fixwifi="sudo systemctl restart NetworkManager"
 alias fixmouse="sudo modprobe -r psmouse && sudo modprobe psmouse && sleep 1 && ~/.config/i3/libinput.py"
 alias activate="source ./venv/bin/activate"
