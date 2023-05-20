@@ -8,6 +8,7 @@ export ZSH="/home/sagar/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+SPACESHIP_PROMPT_ORDER=(user host dir git exec_time line_sep jobs exit_code char)
 ZSH_THEME="spaceship"
 
 # Set list of themes to pick from when loading at random
