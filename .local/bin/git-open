@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# handle the `git open` command using gh browse
+
+# check if gh is installed
+if ! command -v gh &> /dev/null
+then
+    echo "gh could not be found"
+    exit
+fi
+
+# if there is 1 argument, open the rev-parse
+if [ $# -eq 1 ]; then
+    gh browse $(git rev-parse --show-toplevel) --commit=$(git rev-parse $1)
+    exit
+fi
+
+# if no arguments, do the same but with HEAD
+if [ $# -eq 0 ]; then
+    gh browse --commit=$(git rev-parse HEAD)
+    exit
+fi
+
+# if there are 2 args, and the first one is diff, simply open the commit hash
+if [ $# -eq 2 ] && [ $1 == "diff" ]; then
+    gh browse $(git rev-parse $2)
+    exit
+fi
