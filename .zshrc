@@ -137,3 +137,5 @@ alias activate="source ./venv/bin/activate"
 alias dotfiles='/usr/bin/git --git-dir=/home/sagar/.dotfiles/ --work-tree=/home/sagar'
 
 alias sl="sl -e"
+alias vim="nvim"
+

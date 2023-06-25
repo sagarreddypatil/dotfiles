@@ -11,13 +11,13 @@ fi
 
 # if there is 1 argument, open the rev-parse
 if [ $# -eq 1 ]; then
-    gh browse $(git rev-parse --show-toplevel) --commit=$(git rev-parse $1)
+    gh browse . --commit=$(git rev-parse $1)
     exit
 fi
 
 # if no arguments, do the same but with HEAD
 if [ $# -eq 0 ]; then
-    gh browse --commit=$(git rev-parse HEAD)
+    gh browse . --commit=$(git rev-parse HEAD)
     exit
 fi
 

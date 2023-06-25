@@ -1,6 +1,7 @@
 [user]
 	email = sagarreddypatil@gmail.com
 	name = sagarreddypatil
+	signingkey = 3AF9F2B3B7A6EC1A
 [credential "https://github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
