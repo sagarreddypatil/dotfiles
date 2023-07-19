@@ -1,3 +1,5 @@
+theme = "onedarker"
+
 # from https://github.com/LGUG2Z/helix-vim/blob/e0a80982f5297fb39da3695d615d391db3580893/config.toml
 
 [keys.normal]
