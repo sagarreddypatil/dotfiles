@@ -1,4 +1,5 @@
 exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
 input "type:touchpad" {
     tap enabled
@@ -24,8 +25,13 @@ smart_gaps on
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
-exec --no-startup-id dex --autostart --environment sway
+exec --no-startup-id dex --autostart --environment i3
+
+# usb automount
 exec --no-startup-id udiskie -ans
+
+# to show notifiactions
+exec --no-startup-id mako
 
 set $locker $HOME/.config/sway/lock.sh
 exec swayidle -w \
@@ -168,7 +174,7 @@ bindsym $win+BackSpace scratchpad show
 # reload the configuration file
 bindsym $win+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $win+Shift+r restart
+bindsym $win+Shift+r reload
 # exit i3 (logs you out of your X session)
 bindsym $win+Shift+e exit
 
@@ -199,12 +205,8 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
 bar {
-	mode invisible
-	tray_output none
-#        status_command i3status
+    swaybar_command waybar
 }
 
 exec --no-startup-id i3-msg 'workspace 8; exec slack'
