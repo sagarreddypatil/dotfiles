@@ -1,8 +1,8 @@
 font=IBM Plex Mono 10
 
-background-color=#0000007f
+background-color=#000000be
 text-color=#ffffff
 border-color=#a0a0a0
-border-size=1
+border-size=0
 
 default-timeout=15000
