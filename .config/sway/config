@@ -1,6 +1,8 @@
 exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
+exec swaybg --image $HOME/Pictures/GrandCanyon.jpg
+
 input "type:touchpad" {
     tap enabled
     natural_scroll enabled
