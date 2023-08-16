@@ -6,11 +6,12 @@
 	// "width": 1280, // Waybar width
 	// Choose the order of the modules
 	"modules-left": [
+		"clock#time",
 		"sway/workspaces",
 		"sway/mode"
 	],
 	"modules-center": [
-		"sway/window"
+		"sway/window",
 	],
 	"modules-right": [
 		// "temperature",
@@ -18,9 +19,9 @@
 		// "memory",
 		"backlight",
 		"pulseaudio",
-		"clock#time",
 		"battery",
 		"idle_inhibitor",
+		"custom/night",
 		"tray"
 	],
 	// Modules configuration
@@ -96,8 +97,8 @@
 			"car": "CA",
 			"default": "SP"
 		},
-		"on-click": "ponymix -N -t sink toggle",
-		"on-click-right": "ponymix -N -t source toggle"
+		"on-click": "pavucontrol",
+		// "on-click-right": "ponymix -N -t source toggle"
 	},
 	"clock#time": {
 		"interval": 1,
@@ -139,5 +140,12 @@
 		"escape": true,
 		"exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
 		// "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+	},
+	"custom/night": {
+		"exec": "$HOME/.config/waybar/sunset-info.py 2> /dev/null",
+		"exec-on-event": true,
+		"interval": 1,
+		"on-click": "$HOME/.config/waybar/sunset.py",
+		"return-type": "json"
 	}
 }

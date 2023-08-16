@@ -3,6 +3,8 @@ exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSO
 
 exec swaybg --image $HOME/Pictures/GrandCanyon.jpg
 
+exec $HOME/.config/sway/sunset.py
+
 input "type:touchpad" {
     tap enabled
     natural_scroll enabled

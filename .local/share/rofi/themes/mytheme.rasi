@@ -5,10 +5,10 @@
  *******************************************************************************/
 
 * {
-    font:   "Courier New 12";
+    font:   "IBM Plex Mono 11";
 
-    bg0:    #0000007f;
-    bg1:    #ffffff7f;
+    bg0:    #000000bf;
+    bg1:    #ffffffbf;
     bg2:    #ffffffff;
 
     fg0:    #DEDEDE;
@@ -34,16 +34,16 @@ window {
 }
 
 inputbar {
-    font:       "Courier New 20";
-    padding:    12px;
-    spacing:    12px;
+    font:   "IBM Plex Mono 13";
+    padding:    8px;
+    spacing:    8px;
     children:   [ icon-search, entry ];
 }
 
 icon-search {
     expand:     false;
     filename:   "search";
-    size: 28px;
+    size: 22px;
 }
 
 icon-search, entry, element-icon, element-text {
@@ -77,7 +77,7 @@ listview {
 }
 
 element {
-    padding:            8px 16px;
+    padding:            4px 8px;
     spacing:            16px;
     background-color:   transparent;
 }

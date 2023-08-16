@@ -12,14 +12,15 @@
 
 window#waybar {
   /*background: #000000;*/
-  background: rgba(0, 0, 0, 0.7);
-  color: gray;
+  background: rgba(0, 0, 0, 0.75);
   color: #ffffff;
 }
 
 #window {
   color: #ffffff;
   font-weight: bold;
+  margin-right: 1rem;
+  margin-left: 1rem;
 }
 
 #workspaces {
@@ -28,18 +29,13 @@ window#waybar {
 }
 
 #workspaces button {
-  padding: 0 2px;
+  padding: 0 4px;
   margin: 0px;
   background: transparent;
   color: #ffffff;
-  /*
-	color: #00afd7;
-	color: #ffffff;
-	border: 1px solid #00afd7;
-	*/
-  border: 1px solid #1b1d1e;
   font-weight: bold;
 }
+
 #workspaces button:hover {
   box-shadow: inherit;
   text-shadow: inherit;
@@ -51,8 +47,8 @@ window#waybar {
 }
 
 #workspaces button.urgent {
-  background: #af005f;
-  color: #1b1d1e;
+  background: #ffa500;
+  color: #ffffff;
 }
 
 #mode {
@@ -81,23 +77,40 @@ window#waybar {
 #pulseaudio,
 #custom-spotify,
 #tray,
+#custom-night,
 #mode {
   padding: 0 8px;
-  border-left: 1px solid #1b1d1e;
-  border-right: 1px solid #1b1d1e;
+  border-left: 0.5px solid #606060;
+  border-right: 0.5px solid #606060;
   /* background: hotpink; */
   /* margin: 0 2px; */
 }
 
-#temperature {
+#custom-night {
+  color: #ffffff;
+}
+
+#custom-night.night {
+  background: #ffbf00;
+  color: #000000;
+}
+
+#idle_inhibitor {
+}
+
+#backlight {
   border-left: none;
 }
 
 #tray {
   border-right: none;
+  padding: 0 12px;
 }
 
 #clock {
+  margin-right: 1rem;
+  background: #ffffff;
+  color: #000000;
 }
 
 #battery {
