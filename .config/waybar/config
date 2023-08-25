@@ -111,6 +111,7 @@
 			"warning": 20,
 			"critical": 10
 		},
+		"interval": 5,
 		"format": "BAT {capacity}%",
 		"format-charging": "BAT CHRG {capacity}%",
 		"format-plugged": "BAT PLUG {capacity}%",

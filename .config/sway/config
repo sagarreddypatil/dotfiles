@@ -38,11 +38,12 @@ exec --no-startup-id udiskie -ans
 exec --no-startup-id mako
 
 set $locker $HOME/.config/sway/lock.sh
+
 exec swayidle -w \
-    timeout 600 $locker \
-    timeout 570 'swaymsg "output * dpms off"' \
-    resume 'swaymsg "output * dpms on"' \
-    before-sleep $locker
+         timeout 299 $locker \
+         timeout 599 'swaymsg "output * dpms off"' \
+              resume 'swaymsg "output * dpms on"' \
+         before-sleep $locker
 
 bindsym $win+l exec $locker
 
