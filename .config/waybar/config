@@ -6,7 +6,7 @@
 	// "width": 1280, // Waybar width
 	// Choose the order of the modules
 	"modules-left": [
-		"clock#time",
+		"clock",
 		"sway/workspaces",
 		"sway/mode"
 	],
@@ -100,9 +100,9 @@
 		"on-click": "pavucontrol",
 		// "on-click-right": "ponymix -N -t source toggle"
 	},
-	"clock#time": {
+	"clock": {
 		"interval": 1,
-		"format": "{:%I:%M %p}",
+		"format": "{:%a, %b %d, %I:%M:%OS %p}",
 		"tooltip": false
 	},
 	"battery": {
