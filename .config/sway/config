@@ -210,6 +210,8 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+exec $HOME/.config/waybar/sunset.py
+
 bar {
     swaybar_command waybar
 }
