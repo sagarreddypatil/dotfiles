@@ -67,6 +67,9 @@ bindsym XF86AudioPrev exec playerctl previous
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $win
 
+# open nemo
+bindsym $win+e exec nemo
+
 # start a terminal
 bindsym $win+Return exec kitty
 
