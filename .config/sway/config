@@ -216,5 +216,6 @@ bar {
     swaybar_command waybar
 }
 
-for_window [app_id=".*"] floating enable
+for_window [app_id="nemo"] floating enable
+for_window [app_id="blueman-manager"] floating enable
 
