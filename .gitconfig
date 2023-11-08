@@ -4,7 +4,7 @@
 	signingkey = 3AF9F2B3B7A6EC1A
 [credential "https://github.com"]
 	helper = 
-	helper = !/usr/bin/gh auth git-credential
+	helper = !/homes/patilsr/.local/usr/bin/gh auth git-credential
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
