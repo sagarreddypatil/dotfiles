@@ -1,6 +1,6 @@
 [user]
 	email = sagarreddypatil@gmail.com
-	name = sagarreddypatil
+	name = Sagar Patil
 	signingkey = 3AF9F2B3B7A6EC1A
 [credential "https://github.com"]
 	helper = 
@@ -17,3 +17,7 @@
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+[pull]
+	rebase = false
+[push]
+	autoSetupRemote = true
