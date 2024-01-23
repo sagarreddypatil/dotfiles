@@ -9,7 +9,7 @@ export ZSH="/home/sagar/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 SPACESHIP_PROMPT_ORDER=(user host dir git exec_time line_sep jobs exit_code char)
-ZSH_THEME="spaceship"
+ZSH_THEME=""
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -74,6 +74,10 @@ ZSH_THEME="spaceship"
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting poetry)
 
 source $ZSH/oh-my-zsh.sh
+
+fpath+=($HOME/.zsh/pure)
+autoload -U promptinit; promptinit
+prompt pure
 
 # User configuration
 

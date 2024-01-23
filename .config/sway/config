@@ -71,7 +71,7 @@ floating_modifier $win
 bindsym $win+e exec nemo
 
 # start a terminal
-bindsym $win+Return exec kitty
+bindsym $win+Return exec foot
 
 # kill focused window
 bindsym $win+q kill
