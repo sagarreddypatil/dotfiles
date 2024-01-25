@@ -5,4 +5,12 @@
 //@theme "/home/sagar/.local/share/rofi/themes/minimal.rasi"
 //@theme "/home/sagar/.local/share/rofi/themes/onedark.rasi"
 //@theme "/home/sagar/.local/share/rofi/themes/onedark.rasi"
+
+configuration {
+  modi: "window,drun";
+  font: "IBM Plex Mono 12";
+  combi-modi: "window,drun";
+}
+
 @theme "/home/sagar/.local/share/rofi/themes/mytheme.rasi"
+

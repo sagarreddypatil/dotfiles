@@ -84,7 +84,7 @@ bindsym $win+Tab workspace back_and_forth
 bindsym $win+s exec grim -g "$(slurp)" - | wl-copy
 
 # start rofi (program launcher)
-bindsym $win+p exec --no-startup-id "rofi -show-icons -show drun -display-drun '' -location 6"
+bindsym $win+p exec --no-startup-id "rofi -show combi -show-icons"
 
 # change focus
 # bindsym $mod+j focus left
