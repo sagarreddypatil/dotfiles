@@ -221,4 +221,5 @@ bar {
 
 for_window [app_id="nemo"] floating enable
 for_window [app_id="blueman-manager"] floating enable
+for_window [app_id="^firefox$" title="^Extension: \(Bitwarden - Free Password Manager\) - Bitwarden — Mozilla Firefox$"] move scratchpad, resize set width 435 px height 600 px, scratchpad show
 
