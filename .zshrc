@@ -71,7 +71,7 @@ ZSH_THEME=""
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting poetry)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting poetry zsh-fzf-history-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -142,5 +142,3 @@ alias activate="source ./venv/bin/activate"
 alias dotfiles='/usr/bin/git --git-dir=/home/sagar/.dotfiles/ --work-tree=/home/sagar'
 
 alias sl="sl -e"
-alias vim="nvim"
-
