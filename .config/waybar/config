@@ -83,7 +83,7 @@
 	"pulseaudio": {
 		// "scroll-step": 1, // %, can be a float
 		"format": "{icon} {volume}% {format_source}",
-		"format-muted": "MUT {format_source}",
+		"format-muted": "{icon} MUT {format_source}",
 		"format-bluetooth": "BL {volume}% {format_source}",
 		"format-bluetooth-muted": "BL MUT {format_source}",
 		"format-source": "MIC {volume}%",

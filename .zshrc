@@ -8,7 +8,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="spaceship"
+SPACESHIP_PROMPT_ORDER=(user host dir git exec_time line_sep jobs exit_code char)
+ZSH_THEME=""
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -70,9 +71,13 @@ ZSH_THEME="spaceship"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting poetry zsh-fzf-history-search)
 
 source $ZSH/oh-my-zsh.sh
+
+fpath+=($HOME/.zsh/pure)
+autoload -U promptinit; promptinit
+prompt pure
 
 # User configuration
 
@@ -99,3 +104,41 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+export PATH="$HOME/.local/bin/:$PATH"
+
+open() {
+	nohup xdg-open $1 </dev/null >/dev/null 2>&1 &; disown
+}
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/sagar/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/sagar/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/sagar/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/sagar/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+pussh () {
+    ssh patilsr@${1:-data}.cs.purdue.edu
+}
+
+export PATH="$HOME/aliases:$PATH"
+
+# alias neofetch=fastfetch
+
+alias fixwifi="sudo systemctl restart NetworkManager"
+alias fixmouse="sudo modprobe -r psmouse && sudo modprobe psmouse && sleep 1 && ~/.config/i3/libinput.py"
+alias resetmouse="~/.config/i3/libinput.py"
+alias activate="source ./venv/bin/activate"
+alias dotfiles='/usr/bin/git --git-dir=/home/sagar/.dotfiles/ --work-tree=/home/sagar'
+
+alias sl="sl -e"
