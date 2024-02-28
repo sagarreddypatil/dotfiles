@@ -8,7 +8,6 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-SPACESHIP_PROMPT_ORDER=(user host dir git exec_time line_sep jobs exit_code char)
 ZSH_THEME=""
 
 # Set list of themes to pick from when loading at random
@@ -111,26 +110,6 @@ open() {
 	nohup xdg-open $1 </dev/null >/dev/null 2>&1 &; disown
 }
 
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/sagar/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/sagar/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/sagar/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/sagar/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-pussh () {
-    ssh patilsr@${1:-data}.cs.purdue.edu
-}
-
 export PATH="$HOME/aliases:$PATH"
 
 # alias neofetch=fastfetch
@@ -142,3 +121,6 @@ alias activate="source ./venv/bin/activate"
 alias dotfiles='/usr/bin/git --git-dir=/home/sagar/.dotfiles/ --work-tree=/home/sagar'
 
 alias sl="sl -e"
+
+. "/u/scratch2/patilsr/.cargo/env"
+
