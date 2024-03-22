@@ -71,7 +71,7 @@ ZSH_THEME=""
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting poetry zsh-fzf-history-search)
+plugins=(git zsh-autosuggestions poetry zsh-fzf-history-search fast-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -111,22 +111,6 @@ open() {
 	nohup xdg-open $1 </dev/null >/dev/null 2>&1 &; disown
 }
 
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/sagar/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/sagar/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/sagar/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/sagar/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
 pussh () {
     ssh patilsr@${1:-data}.cs.purdue.edu
 }
@@ -142,3 +126,25 @@ alias activate="source ./venv/bin/activate"
 alias dotfiles='/usr/bin/git --git-dir=/home/sagar/.dotfiles/ --work-tree=/home/sagar'
 
 alias sl="sl -e"
+
+eval "$(zoxide init zsh)"
+alias vim="nvim"
+
+_zoxide_zsh_tab_completion() {
+    (( $+compstate )) && compstate[insert]=menu
+    local keyword="${words:2}"
+    local completions=(${(@f)"$(zoxide query -l "$keyword")"})
+
+
+    if [[ ${#completions[@]} == 0 ]]; then
+        _files -/
+    else
+        compadd -U -V z "${(@)completions}"
+    fi
+}
+
+if [ "${+functions[compdef]}" -ne 0 ]; then
+    compdef _zoxide_zsh_tab_completion z 2> /dev/null
+fi
+
+alias gl="git log --decorate --oneline --graph --all"

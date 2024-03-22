@@ -34,6 +34,40 @@ require("lazy").setup({
     end
   },
   {
+    'nvim/nvim-lspconfig',
+  },
+  {
+    'hrsh7th/nvim-cmp',
+    dependencies = {
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-nvim-lsp',
+      'onsails/lspkind.nvim',
+      'hrsh7th/cmp-nvim-lsp-signature-help',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-nvim-lua',
+      'saadparwaiz1/cmp_luasnip',
+      'lukas-reineke/cmp-under-comparator',
+      'hrsh7th/cmp-cmdline',
+      'hrsh7th/cmp-nvim-lsp-document-symbol',
+      'doxnit/cmp-luasnip-choice',
+    },
+    config = function()
+      local cmp = require('cmp')
+      cmp.setup({
+        mapping = cmp.mapping.preset.insert({
+          ['<C-Space>'] = cmp.mapping.complete(),
+          ['<C-e>'] = cmp.mapping.close(),
+          ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        }),
+        sources = {
+          { name = 'nvim_lsp' },
+          { name = 'buffer' },
+        }
+      })
+    end,
+    event = 'InsertEnter',
+  },
+  {
     "scalameta/nvim-metals",
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -62,7 +96,8 @@ require("lazy").setup({
         group = nvim_metals_group,
       })
     end
-  }
+  },
+
 })
 
 -- misc vim settings
@@ -70,6 +105,9 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 vim.opt.signcolumn = "yes"
+
+-- set colorscheme
+vim.cmd('colorscheme moonfly')
 
 -- do set formatoptions-=cro
 vim.cmd('set formatoptions-=cro')
@@ -86,20 +124,29 @@ for i = 0, 9 do
   vim.keymap.set('n', '<A-'..i..'>', ':BufferLineGoToBuffer '..i..'<CR>', {silent = true})
 end
 
+function ToggleBetweenBuffers()
+  vim.cmd('buffer #')
+end
+
 -- alt tab to switch back and forth to previous buffer
-vim.keymap.set('n', '<A-Tab>', ':BufferLineCycleNext<CR>', {silent = true})
+-- vim.keymap.set('n', '<A-Tab>', ':BufferLineCycleNext<CR>', {silent = true})
+vim.keymap.set('n', '<A-Tab>', ':lua ToggleBetweenBuffers()<CR>', {silent = true})
+
 
 -- alt left and rigth to move prev and next
 vim.keymap.set('n', '<A-Left>', ':BufferLineMovePrev<CR>', {silent = true})
 vim.keymap.set('n', '<A-Right>', ':BufferLineMoveNext<CR>', {silent = true})
 
+-- <C-w> to close current buffer
+vim.keymap.set('n', '<C-w>', ':bd<CR>', {silent = true})
+
 -- misc keymaps
 -- f12 go to definition
 vim.keymap.set('n', '<F12>', ':lua vim.lsp.buf.definition()<CR>', {silent = true})
 
--- <C-w> to close current buffer
-vim.keymap.set('n', '<C-w>', ':bd<CR>', {silent = true})
+-- Setup language servers.
+local lspconfig = require('lspconfig')
 
--- set colorscheme
-vim.cmd('colorscheme moonfly')
+lspconfig.pyright.setup{}
+lspconfig.tsserver.setup{}
 
