@@ -81,7 +81,7 @@ bindsym $win+q kill
 bindsym $win+Tab workspace back_and_forth
 
 # screenshot
-bindsym $win+s exec grim -g "$(slurp)" - | wl-copy
+bindsym $win+s exec grim -g "$(slurp)" /tmp/screen.png && cat /tmp/screen.png | wl-copy
 
 # start rofi (program launcher)
 bindsym $win+p exec --no-startup-id "rofi -show combi -show-icons"
@@ -222,4 +222,22 @@ bar {
 for_window [app_id="nemo"] floating enable
 for_window [app_id="blueman-manager"] floating enable
 for_window [app_id="^firefox$" title="^Extension: \(Bitwarden - Free Password Manager\) - Bitwarden — Mozilla Firefox$"] move scratchpad, resize set width 435 px height 600 px, scratchpad show
+
+assign [app_id="^firefox$"] $ws1
+assign [class="^Teams$"] $ws7
+assign [class="^Slack$"] $ws8
+assign [class="^discord$"] $ws9
+assign [class="^Spotify$"] $ws10
+
+exec --no-startup-id firefox
+exec --no-startup-id teams
+exec --no-startup-id slack
+exec --no-startup-id discord
+exec --no-startup-id spotify
+
+# cliphist - clipboard history manager
+exec --no-startup-id wl-paste --watch cliphist store
+
+# clip history keybindings
+bindsym $win+o exec cliphist list | rofi -dmenu -p "Clipboard" | cliphist decode | wl-copy
 
