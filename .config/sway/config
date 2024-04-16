@@ -241,3 +241,6 @@ exec --no-startup-id wl-paste --watch cliphist store
 # clip history keybindings
 bindsym $win+o exec cliphist list | rofi -dmenu -p "Clipboard" | cliphist decode | wl-copy
 
+# some gtk dbus bullshit idk
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
