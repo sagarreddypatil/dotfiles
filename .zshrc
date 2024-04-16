@@ -24,6 +24,11 @@ function precmd {
   print -Pn "\e[ q"
 }
 
+__git_files () {
+    # fix for slow yadm completion
+    _wanted files expl 'local files' _files
+}
+
 export PATH="$HOME/.local/bin/:$PATH"
 
 open() {
