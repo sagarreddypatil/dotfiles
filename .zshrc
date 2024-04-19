@@ -21,7 +21,9 @@ autoload -U promptinit; promptinit
 prompt pure
 
 function precmd {
-  print -Pn "\e[ q"
+  if [[ $TERM == foot ]]; then
+    print -Pn "\e[ q"
+  fi
 }
 
 __git_files () {
@@ -79,3 +81,4 @@ function swap()
     mv $TMPFILE "$2"
 }
 
+alias yay='paru'
