@@ -1,22 +1,22 @@
-export ZSH="/home/sagar/.oh-my-zsh"
+autoload -U compinit && compinit
 
-ZSH_THEME=""
+HISTFILE=$HOME/.zsh_history
+SAVEHIST=1000000
+HISTSIZE=1000000
 
-DISABLE_MAGIC_FUNCTIONS="true"
+setopt extended_history       # record timestamp of command in HISTFILE
+setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt hist_ignore_dups       # ignore duplicated commands history list
+setopt hist_ignore_space      # ignore commands that start with space
+setopt hist_verify            # show command with history expansion to user before running it
+setopt share_history          # share command history data
 
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-plugins=(git zsh-autosuggestions poetry zsh-fzf-history-search fast-syntax-highlighting)
-
-source $ZSH/oh-my-zsh.sh
+source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
 fpath+=($HOME/.zsh/pure)
+
 autoload -U promptinit; promptinit
 prompt pure
 
@@ -26,59 +26,16 @@ function precmd {
   fi
 }
 
-__git_files () {
-    # fix for slow yadm completion
-    _wanted files expl 'local files' _files
-}
-
-export PATH="$HOME/.local/bin/:$PATH"
+alias ls='ls --color=auto'
+zstyle ':completion:*' menu select
 
 open() {
 	nohup xdg-open $1 </dev/null >/dev/null 2>&1 &; disown
 }
 
-alias fixwifi="sudo systemctl restart NetworkManager"
-alias fixmouse="sudo modprobe -r psmouse && sudo modprobe psmouse && sleep 1 && ~/.config/i3/libinput.py"
-alias resetmouse="~/.config/i3/libinput.py"
+# [alt/ctrl] + [left/right] to move between words
+bindkey '^[[1;5C' forward-word
+bindkey '^[[1;5D' backward-word
+bindkey "^[[1;3C" forward-word
+bindkey "^[[1;3D" backward-word
 
-activate() {
-  # find a venv subdirectory and activate it
-  venv=$(find . -mindepth 2 -maxdepth 2 -type d -name 'bin' -exec test -e "{}/activate" \; -print -quit)
-  if [ -z "$venv" ]; then
-    echo "No virtualenv found"
-  else
-    source "$venv/activate"
-  fi
-}
-alias sl="sl -e"
-
-eval "$(zoxide init zsh)"
-
-_zoxide_zsh_tab_completion() {
-    (( $+compstate )) && compstate[insert]=menu
-    local keyword="${words:2}"
-    local completions=(${(@f)"$(zoxide query -l "$keyword")"})
-
-
-    if [[ ${#completions[@]} == 0 ]]; then
-        _files -/
-    else
-        compadd -U -V z "${(@)completions}"
-    fi
-}
-
-if [ "${+functions[compdef]}" -ne 0 ]; then
-    compdef _zoxide_zsh_tab_completion z 2> /dev/null
-fi
-
-alias gl="git log --decorate --oneline --graph --all"
-
-function swap()         
-{
-    local TMPFILE=tmp.$$
-    mv "$1" $TMPFILE
-    mv "$2" "$1"
-    mv $TMPFILE "$2"
-}
-
-alias yay='paru'
