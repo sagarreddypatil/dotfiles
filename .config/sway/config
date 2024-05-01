@@ -18,10 +18,10 @@ set $alt Mod1
 set $win Mod4
 
 # gaps
-for_window [class=".*"] border pixel 0
+for_window [class=".*"] border pixel 3
 gaps outer 0
-gaps inner 5
-smart_gaps on
+gaps inner 2
+smart_gaps off
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).

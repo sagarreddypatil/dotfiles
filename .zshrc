@@ -1,5 +1,8 @@
 autoload -U compinit && compinit
 
+autoload -U select-word-style
+select-word-style bash
+
 HISTFILE=$HOME/.zsh_history
 SAVEHIST=1000000
 HISTSIZE=1000000
@@ -39,3 +42,4 @@ bindkey '^[[1;5D' backward-word
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
 
+alias yay='paru'
