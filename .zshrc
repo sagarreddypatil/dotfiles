@@ -3,16 +3,12 @@ autoload -U compinit && compinit
 autoload -U select-word-style
 select-word-style bash
 
-HISTFILE=$HOME/.zsh_history
+HISTFILE=~/.zsh_history
 SAVEHIST=1000000
 HISTSIZE=1000000
 
 setopt extended_history       # record timestamp of command in HISTFILE
-setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
-setopt hist_ignore_dups       # ignore duplicated commands history list
-setopt hist_ignore_space      # ignore commands that start with space
-setopt hist_verify            # show command with history expansion to user before running it
-setopt share_history          # share command history data
+setopt SHARE_HISTORY
 
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 # source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -43,3 +39,5 @@ bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
 
 alias yay='paru'
+
+export PATH=$HOME/.local/bin:$PATH
