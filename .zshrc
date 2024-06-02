@@ -19,11 +19,11 @@ fpath+=($HOME/.zsh/pure)
 autoload -U promptinit; promptinit
 prompt pure
 
-function precmd {
-  if [[ $TERM == foot ]]; then
-    print -Pn "\e[ q"
-  fi
-}
+# function precmd {
+#   if [[ $TERM == foot ]]; then
+#     print -Pn "\e[ q"
+#   fi
+# }
 
 alias ls='ls --color=auto'
 zstyle ':completion:*' menu select
