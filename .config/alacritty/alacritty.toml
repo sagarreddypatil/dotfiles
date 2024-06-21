@@ -3,3 +3,9 @@ opacity = 0.75
 
 [cursor]
 style = { shape = "Underline", blinking = "On" }
+
+[keyboard]
+bindings = [
+    { key = "PageUp", action = "ScrollPageUp" },
+    { key = "PageDown", action = "ScrollPageDown" }
+]
