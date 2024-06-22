@@ -11,19 +11,14 @@ setopt extended_history       # record timestamp of command in HISTFILE
 setopt SHARE_HISTORY
 
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-# source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $HOME/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 fpath+=($HOME/.zsh/pure)
 
 autoload -U promptinit; promptinit
 prompt pure
-
-# function precmd {
-#   if [[ $TERM == foot ]]; then
-#     print -Pn "\e[ q"
-#   fi
-# }
 
 alias ls='ls --color=auto'
 zstyle ':completion:*' menu select
