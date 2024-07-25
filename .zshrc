@@ -36,3 +36,5 @@ bindkey "^[[1;3D" backward-word
 alias yay='paru'
 
 export PATH=$HOME/.local/bin:$PATH
+export RUSTC_WRAPPER=/usr/bin/sccache
+
