@@ -236,11 +236,11 @@ exec --no-startup-id discord
 exec --no-startup-id spotify
 
 # cliphist - clipboard history manager
-exec --no-startup-id wl-paste --watch cliphist store
+# exec --no-startup-id wl-paste --watch cliphist store
 
 # persistent clipboard
-exec --no-startup-id wl-clip-persist --clipboard regular
+# exec --no-startup-id wl-clip-persist --clipboard regular
 
 # clip history keybindings
-bindsym $win+o exec cliphist list | rofi -dmenu -p "Clipboard" | cliphist decode | wl-copy
+# bindsym $win+o exec cliphist list | rofi -dmenu -p "Clipboard" | cliphist decode | wl-copy
 
