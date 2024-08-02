@@ -37,4 +37,4 @@ alias yay='paru'
 
 export PATH=$HOME/.local/bin:$PATH
 export RUSTC_WRAPPER=/usr/bin/sccache
-
+alias vim=nvim
