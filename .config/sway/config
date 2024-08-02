@@ -229,11 +229,10 @@ assign [class="^Slack$"] $ws8
 assign [class="^discord$"] $ws9
 assign [class="^Spotify$"] $ws10
 
-exec --no-startup-id firefox
-exec --no-startup-id teams
-exec --no-startup-id slack
-exec --no-startup-id discord
-exec --no-startup-id spotify
+# exec --no-startup-id firefox
+# exec --no-startup-id slack
+# exec --no-startup-id discord
+# exec --no-startup-id spotify
 
 # cliphist - clipboard history manager
 # exec --no-startup-id wl-paste --watch cliphist store
