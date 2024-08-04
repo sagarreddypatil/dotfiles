@@ -81,7 +81,7 @@ bindsym $win+q kill
 bindsym $win+Tab workspace back_and_forth
 
 # screenshot
-bindsym $win+s exec grim -g "$(slurp)" /tmp/screen.png && cat /tmp/screen.png | wl-copy
+bindsym $win+s exec grim -g "$(slurp)" /tmp/screen.png && $HOME/.config/sway/post-screenshot.sh
 
 # start rofi (program launcher)
 bindsym $win+p exec --no-startup-id "rofi -show combi -show-icons"
