@@ -20,8 +20,8 @@ set $win Mod4
 # gaps
 for_window [class="^.*"] border pixel 0
 gaps outer 0
-gaps inner 2
-smart_gaps off
+gaps inner 5
+smart_gaps on
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -71,7 +71,7 @@ floating_modifier $win
 bindsym $win+e exec nemo
 
 # start a terminal
-bindsym $win+Return exec alacritty
+bindsym $win+Return exec foot
 
 # kill focused window
 bindsym $win+q kill
@@ -86,29 +86,17 @@ bindsym $win+s exec grim -g "$(slurp)" /tmp/screen.png && $HOME/.config/sway/pos
 # start rofi (program launcher)
 bindsym $win+p exec --no-startup-id "rofi -show combi -show-icons"
 
-# change focus
-# bindsym $mod+j focus left
-# bindsym $mod+k focus down
-# bindsym $mod+l focus up
-# bindsym $mod+semicolon focus right
-
-# alternatively, you can use the cursor keys:
-# bindsym $mod+Left focus left
-# bindsym $mod+Down focus down
-# bindsym $mod+Up focus up
-# bindsym $mod+Right focus right
-
 # move focused window
-bindsym $win+Shift+j move left
-bindsym $win+Shift+k move down
-bindsym $win+Shift+l move up
-bindsym $win+Shift+semicolon move right
-
-# alternatively, you can use the cursor keys:
 bindsym $win+Shift+Left move left
 bindsym $win+Shift+Down move down
 bindsym $win+Shift+Up move up
 bindsym $win+Shift+Right move right
+
+# move focus
+bindsym $win+Left focus left
+bindsym $win+Down focus down
+bindsym $win+Up focus up
+bindsym $win+Right focus right
 
 # split in horizontal orientation
 bindsym $win+h split h
@@ -125,7 +113,7 @@ bindsym $win+v split v
 bindsym $win+space floating toggle
 
 # toggle sticky
-bindsym $mod+space sticky toggle
+bindsym $mod+s+space sticky toggle
 
 # enter fullscreen mode for the focused container
 bindsym $win+shift+space fullscreen toggle
