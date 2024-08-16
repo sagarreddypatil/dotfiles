@@ -20,6 +20,8 @@ fpath+=($HOME/.zsh/pure)
 autoload -U promptinit; promptinit
 prompt pure
 
+export PURE_PROMPT_SYMBOL='λ'
+
 alias ls='ls --color=auto'
 zstyle ':completion:*' menu select
 
@@ -37,6 +39,7 @@ alias yay='paru'
 
 export PATH=$HOME/.local/bin:$PATH
 export RUSTC_WRAPPER=/usr/bin/sccache
+export NODE_PATH=$(npm root --quiet -g)
 alias vim=nvim
 
 
