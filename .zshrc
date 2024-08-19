@@ -39,7 +39,7 @@ alias yay='paru'
 
 export PATH=$HOME/.local/bin:$PATH
 export RUSTC_WRAPPER=/usr/bin/sccache
-export NODE_PATH=$(npm root --quiet -g)
+# export NODE_PATH=$(npm root --quiet -g)
 alias vim=nvim
 
 
@@ -50,3 +50,4 @@ alias vim=nvim
 # This section can be safely removed at any time if needed.
 [[ ! -r '/home/sagar/.opam/opam-init/init.zsh' ]] || source '/home/sagar/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
 # END opam configuration
+#
