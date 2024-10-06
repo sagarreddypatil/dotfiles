@@ -25,14 +25,19 @@ cmd + shift - 8 : yabai -m window --space 8
 cmd + shift - 9 : yabai -m window --space 9
 cmd + shift - 0 : yabai -m window --space 10
 
+# cmd tab goes to previous space
+cmd - tab : yabai -m space --focus recent
+
+
 # cmd + space for tiling/floating mode
 cmd - space : yabai -m window --toggle float
 
-# cmd + r to reload yabai config
-cmd - r : yabai --restart-service
+# cmd + shift + r to reload yabai config
+cmd + shift - r : yabai --restart-service && sketchybar --reload
 
 # cmd + enter to open terminal
-cmd - return : open -na /Applications/iTerm.app
+# run `tell application "iTerm" to create window with default profile; activate` in applescript
+cmd - return : osascript -e 'tell application "iTerm" to create window with default profile'
 
 # cmd + shift + left/right/up/down to move window
 cmd + shift - left : yabai -m window --warp west
@@ -52,5 +57,8 @@ cmd - down : yabai -m window --focus south
 # cmd + shift - k : yabai -m window --warp north
 # cmd + shift - j : yabai -m window --warp south
 
-# cmd + q to quit application (same as cmd + q)
-cmd - q : osascript -e 'tell application "System Events" to key code 12 using {command down}'
+# alt + s: screenshot to clipboard, selection
+alt - s : screencapture -i -c
+
+# cmd + e: toggle split direction
+cmd - e : yabai -m window --toggle split
