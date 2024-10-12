@@ -12,7 +12,7 @@ if [ $current_spaces -lt 10 ]; then
 fi
 
 # disable macOS menu bar
-yabai -m config external_bar off:0:0
+yabai -m config external_bar all:40:0
 yabai -m config menubar_opacity 0.0
 
 # cmd + lmb/rmb for move/resize
@@ -27,10 +27,10 @@ yabai -m config mouse_follows_focus off
 # show shadows only for floating windows
 yabai -m config window_shadow float
 
-# render all unfocused windows with 90% opacity, unless it's not floating
+# render all unfocused windows with opacity, unless it's not floating
 yabai -m config window_opacity on
 yabai -m config active_window_opacity 1.0
-yabai -m config normal_window_opacity 0.8
+yabai -m config normal_window_opacity 1.0
 
 # window stuff
 yabai -m config window_placement second_child
