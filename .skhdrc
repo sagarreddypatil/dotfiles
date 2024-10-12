@@ -37,7 +37,7 @@ cmd + shift - r : yabai --restart-service && sketchybar --reload
 
 # cmd + enter to open terminal
 # run `tell application "iTerm" to create window with default profile; activate` in applescript
-cmd - return : osascript -e 'tell application "iTerm" to create window with default profile'
+cmd - return : ~/.config/yabai/open_iterm.sh
 
 # cmd + shift + left/right/up/down to move window
 cmd + shift - left : yabai -m window --warp west
