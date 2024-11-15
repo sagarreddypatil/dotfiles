@@ -25,9 +25,7 @@ export PURE_PROMPT_SYMBOL='λ'
 alias ls='ls --color=auto'
 zstyle ':completion:*' menu select
 
-open() {
-	nohup xdg-open $1 </dev/null >/dev/null 2>&1 &; disown
-}
+os_name=$(uname -s)
 
 # [alt/ctrl] + [left/right] to move between words
 bindkey '^[[1;5C' forward-word
@@ -38,7 +36,7 @@ bindkey "^[[1;3D" backward-word
 alias yay='paru'
 
 export PATH=$HOME/.local/bin:$PATH
-export RUSTC_WRAPPER=/usr/bin/sccache
+export RUSTC_WRAPPER=/opt/homebrew/bin/sccache
 # export NODE_PATH=$(npm root --quiet -g)
 alias vim=nvim
 
@@ -50,4 +48,9 @@ alias vim=nvim
 # This section can be safely removed at any time if needed.
 [[ ! -r '/home/sagar/.opam/opam-init/init.zsh' ]] || source '/home/sagar/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
 # END opam configuration
-#
+
+eval $(opam env)
+
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
