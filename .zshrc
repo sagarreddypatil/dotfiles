@@ -38,18 +38,29 @@ alias yay='paru'
 export PATH=$HOME/.local/bin:$PATH
 export RUSTC_WRAPPER=/opt/homebrew/bin/sccache
 # export NODE_PATH=$(npm root --quiet -g)
-alias vim=nvim
 
+function is_bin_in_path {
+  if [[ -n $ZSH_VERSION ]]; then
+    builtin whence -p "$1" &> /dev/null
+  else  # bash:
+    builtin type -P "$1" &> /dev/null
+  fi
+}
 
-# BEGIN opam configuration
-# This is useful if you're using opam as it adds:
-#   - the correct directories to the PATH
-#   - auto-completion for the opam binary
-# This section can be safely removed at any time if needed.
-[[ ! -r '/home/sagar/.opam/opam-init/init.zsh' ]] || source '/home/sagar/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
-# END opam configuration
+is_bin_in_path nvim && alias vim=nvim
 
-eval $(opam env)
+if is_bin_in_path opam; then
+  # BEGIN opam configuration
+  # This is useful if you're using opam as it adds:
+  #   - the correct directories to the PATH
+  #   - auto-completion for the opam binary
+  # This section can be safely removed at any time if needed.
+  
+  [[ ! -r '/home/sagar/.opam/opam-init/init.zsh' ]] || source '/home/sagar/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
+  # END opam configuration
+  
+  eval $(opam env)
+fi
 
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
