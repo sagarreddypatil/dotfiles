@@ -1,105 +1,64 @@
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.expandtab = true
-vim.bo.softtabstop = 2
-
+-- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+if not vim.uv.fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
 end
-
 vim.opt.rtp:prepend(lazypath)
-vim.opt.termguicolors = true
 
-require("lazy").setup({
-  { 'nvim-telescope/telescope.nvim', tag = '0.1.5', dependencies = { 'nvim-lua/plenary.nvim' } },
-  'github/copilot.vim',
-  {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
-  { "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
-  { 'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons' },
-  {
-    'rmagatti/auto-session',
-    config = function() 
-      require('auto-session').setup {
-        log_level = "error",
-        auto_session_suppress_dirs = { "~/", "~/Documents", "~/Downloads", "/"},
-      }
-    end
-  },
-  {
-    "scalameta/nvim-metals",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    ft = { "scala", "sbt", "java" },
-    opts = function()
-      local metals_config = require("metals").bare_config()
-      -- Change metals version
-      metals_config.settings = {
-        serverVersion = "0.4.0"
-      }
-      
-      metals_config.on_attach = function(client, bufnr)
-        -- your on_attach function
-      end
+-- some vim options
+vim.cmd("set expandtab")
+vim.cmd("set tabstop=2")
+vim.cmd("set softtabstop=2")
+vim.cmd("set shiftwidth=2")
+vim.g.mapleader = " "
+vim.g.background = "light"
 
-      return metals_config
-    end,
-    config = function(self, metals_config)
-      local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = self.ft,
-        callback = function()
-          require("metals").initialize_or_attach(metals_config)
-        end,
-        group = nvim_metals_group,
-      })
-    end
-  }
-})
+vim.opt.swapfile = false
 
--- misc vim settings
-vim.opt.number = true
-vim.opt.relativenumber = true
+vim.wo.number = true
+vim.wo.relativenumber = true
+vim.wo.cursorline = true
 
-vim.opt.signcolumn = "yes"
+-- Keyboard shortcuts
 
--- do set formatoptions-=cro
-vim.cmd('set formatoptions-=cro')
+-- Navigate vim panes better
+vim.keymap.set('n', '<c-k>', ':wincmd k<cr>')
+vim.keymap.set('n', '<c-j>', ':wincmd j<cr>')
+vim.keymap.set('n', '<c-h>', ':wincmd h<cr>')
+vim.keymap.set('n', '<c-l>', ':wincmd l<cr>')
 
-local builtin = require('telescope.builtin')
-require("bufferline").setup{}
+-- file system tree
+vim.keymap.set("n", "<C-n>", ":Neotree filesystem toggle right<cr>", { desc = "Toggle Neotree" })
+vim.keymap.set("n", "<C-b>", ":Neotree buffers toggle right<cr>", { desc = "Toggle Neotree" })
 
--- telescope keymaps
-vim.keymap.set('n', '<C-p>', builtin.find_files, {})
-vim.keymap.set('n', '?', builtin.live_grep, {})
+-- Shortcuts for switching buffers
+vim.keymap.set('n', '<Tab>', '<cmd>BufferLineCycleNext<cr>', { noremap = true, silent = true })
+vim.keymap.set('n', '<S-Tab>', '<cmd>BufferLineCyclePrev<cr>', { noremap = true, silent = true })
 
--- bufferline keymaps
-for i = 0, 9 do
-  vim.keymap.set('n', '<A-'..i..'>', ':BufferLineGoToBuffer '..i..'<CR>', {silent = true})
-end
+-- Optional: Shortcuts for moving buffers
+vim.keymap.set('n', '<Leader>bmn', '<cmd>BufferLineMoveNext<cr>', { noremap = true, silent = true })
+vim.keymap.set('n', '<Leader>bmp', '<cmd>BufferLineMovePrev<cr>', { noremap = true, silent = true })
 
--- alt tab to switch back and forth to previous buffer
-vim.keymap.set('n', '<A-Tab>', ':BufferLineCycleNext<CR>', {silent = true})
+-- Optional: Shortcut for closing buffers
+vim.keymap.set('n', '<Leader>bc', '<cmd>BufferLinePickClose<cr>', { noremap = true, silent = true })
 
--- alt left and rigth to move prev and next
-vim.keymap.set('n', '<A-Left>', ':BufferLineMovePrev<CR>', {silent = true})
-vim.keymap.set('n', '<A-Right>', ':BufferLineMoveNext<CR>', {silent = true})
+-- telescope
+vim.keymap.set("n", "<C-p>", ":Telescope find_files<cr>", {})
+vim.keymap.set("n", "<C-space>", ":Telescope live_grep<cr>", {})
+-- vim.keymap.set("n", "<leader><leader>", builtin.oldfiles, {})
 
--- misc keymaps
--- f12 go to definition
-vim.keymap.set('n', '<F12>', ':lua vim.lsp.buf.definition()<CR>', {silent = true})
+require("lazy").setup("plugins")
 
--- <C-w> to close current buffer
-vim.keymap.set('n', '<C-w>', ':bd<CR>', {silent = true})
-
--- set colorscheme
-vim.cmd('colorscheme moonfly')
+-- color theme
+vim.cmd('colorscheme github_dark_default')
 

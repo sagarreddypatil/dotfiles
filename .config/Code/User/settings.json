@@ -1,0 +1,125 @@
+{
+    "[c]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+    "[cpp]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+    "[css]": {
+        "editor.defaultFormatter": "vscode.css-language-features"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "[scss]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[xml]": {
+        "editor.formatOnSave": false
+    },
+    "grammarly.files.exclude": [
+        "CMakeLists.txt",
+    ],
+    "update.mode": "none",
+    "cmake.configureOnOpen": false,
+    "editor.minimap.renderCharacters": false,
+    "editor.cursorBlinking": "smooth",
+    "editor.fontFamily": "Iosevka NF",
+    "editor.fontSize": 16,
+    "editor.formatOnSave": false,
+    "editor.inlineSuggest.enabled": true,
+    // "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'zero', 'onum'",
+    "editor.letterSpacing": 0.5,
+    // "editor.lineHeight": 19,
+    "editor.lineNumbers": "relative",
+    "editor.renderWhitespace": "trailing",
+    "editor.suggestSelection": "first",
+    "emmet.showExpandedAbbreviation": "never",
+    "extensions.ignoreRecommendations": true,
+    "git.confirmSync": false,
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": true,
+        "markdown": true,
+        "scminput": false,
+        "c": true,
+        "yaml": true
+    },
+    "python.terminal.activateEnvironment": true,
+    "remote.SSH.serverInstallPath": {
+        "data": "/homes/patilsr/scratch",
+        "mc17": "/homes/patilsr/scratch",
+        "mc18": "/homes/patilsr/scratch",
+        "mc19": "/homes/patilsr/scratch",
+        "mc20": "/homes/patilsr/scratch",
+        "mc21": "/homes/patilsr/scratch",
+        "gilbreth": "/home/patilsr/scratch"
+    },
+    "security.workspace.trust.enabled": false,
+    "telemetry.telemetryLevel": "off",
+    "terminal.integrated.cursorStyle": "underline",
+    "terminal.integrated.fontFamily": "Fira Code",
+    "terminal.integrated.fontSize": 13,
+    "terminal.integrated.inheritEnv": true,
+    "vim.cursorStylePerMode.insert": "line",
+    "vim.cursorStylePerMode.normal": "block",
+    "vim.handleKeys": {
+        "<C-d>": true,
+        "<C-s>": false,
+        "<C-z>": false,
+        "<C-p>": false,
+    },
+    "editor.inlayHints.enabled": "offUnlessPressed",
+    "workbench.startupEditor": "welcomePage",
+    "editor.rulers": [
+        100
+    ],
+    "cmake.showOptionsMovedNotification": false,
+    "files.watcherExclude": {
+        "**/.bloop": true,
+        "**/.metals": true,
+        "**/.ammonite": true
+    },
+    "editor.autoClosingBrackets": "never",
+    "workbench.sideBar.location": "right",
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "editor.semanticTokenColorCustomizations": {
+        "enabled": true,
+        "rules": {
+            "*.mutable": {
+                "underline": false
+            }
+        }
+    },
+    "diffEditor.ignoreTrimWhitespace": false,
+    "github.copilot.editor.enableAutoCompletions": true,
+    "workbench.colorTheme": "GitHub Dark Default",
+    "rust-analyzer.check.extraEnv": {
+        "RUSTC_WRAPPER": "/usr/bin/sccache"
+    },
+    "zig.path": "zig",
+    "zig.initialSetupDone": true,
+    "zig.zls.path": "zls",
+    "vscoq.path": "/home/sagar/.opam/5.1.0/bin/vscoqtop",
+}

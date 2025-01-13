@@ -1,126 +1,69 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+autoload -U compinit && compinit
 
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+autoload -U select-word-style
+select-word-style bash
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME=""
+HISTFILE=~/.zsh_history
+SAVEHIST=1000000
+HISTSIZE=1000000
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+setopt extended_history       # record timestamp of command in HISTFILE
+setopt SHARE_HISTORY
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOME/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting poetry zsh-fzf-history-search)
-
-source $ZSH/oh-my-zsh.sh
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 fpath+=($HOME/.zsh/pure)
+
 autoload -U promptinit; promptinit
 prompt pure
 
-# User configuration
+export PURE_PROMPT_SYMBOL='λ'
 
-# export MANPATH="/usr/local/man:$MANPATH"
+alias ls='ls --color=auto'
+zstyle ':completion:*' menu select
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+os_name=$(uname -s)
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+# [alt/ctrl] + [left/right] to move between words
+bindkey '^[[1;5C' forward-word
+bindkey '^[[1;5D' backward-word
+bindkey "^[[1;3C" forward-word
+bindkey "^[[1;3D" backward-word
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+alias yay='paru'
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+export PATH=$HOME/.local/bin:$PATH
+export RUSTC_WRAPPER=/opt/homebrew/bin/sccache
+# export NODE_PATH=$(npm root --quiet -g)
 
-export PATH="$HOME/.local/bin/:$PATH"
-
-open() {
-	nohup xdg-open $1 </dev/null >/dev/null 2>&1 &; disown
+function is_bin_in_path {
+  if [[ -n $ZSH_VERSION ]]; then
+    builtin whence -p "$1" &> /dev/null
+  else  # bash:
+    builtin type -P "$1" &> /dev/null
+  fi
 }
 
-export PATH="$HOME/aliases:$PATH"
+is_bin_in_path nvim && alias vim=nvim
 
-# alias neofetch=fastfetch
+if is_bin_in_path opam; then
+  # BEGIN opam configuration
+  # This is useful if you're using opam as it adds:
+  #   - the correct directories to the PATH
+  #   - auto-completion for the opam binary
+  # This section can be safely removed at any time if needed.
+  
+  [[ ! -r '/home/sagar/.opam/opam-init/init.zsh' ]] || source '/home/sagar/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
+  # END opam configuration
+  
+  eval $(opam env)
+fi
 
-alias fixwifi="sudo systemctl restart NetworkManager"
-alias fixmouse="sudo modprobe -r psmouse && sudo modprobe psmouse && sleep 1 && ~/.config/i3/libinput.py"
-alias resetmouse="~/.config/i3/libinput.py"
-alias activate="source ./venv/bin/activate"
-alias dotfiles='/usr/bin/git --git-dir=/home/sagar/.dotfiles/ --work-tree=/home/sagar'
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 
-alias sl="sl -e"
-
-. "/u/scratch2/patilsr/.cargo/env"
 
