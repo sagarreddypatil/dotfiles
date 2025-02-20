@@ -33,7 +33,7 @@ cmd - tab : yabai -m space --focus recent
 alt - space : yabai -m window --toggle float; sh -c 'cd ~/.config/yabai/float_smaller; cargo run --release'
 
 # cmd + shift + r to reload yabai config
-cmd + shift - r : yabai --restart-service && sketchybar --reload
+alt + shift - r : yabai --restart-service && sketchybar --reload
 
 # cmd + enter to open terminal
 # run `tell application "iTerm" to create window with default profile; activate` in applescript

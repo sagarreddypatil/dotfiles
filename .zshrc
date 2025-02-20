@@ -36,7 +36,7 @@ bindkey "^[[1;3D" backward-word
 alias yay='paru'
 
 export PATH=$HOME/.local/bin:$PATH
-export RUSTC_WRAPPER=/opt/homebrew/bin/sccache
+export RUSTC_WRAPPER=$(which sccache)
 # export NODE_PATH=$(npm root --quiet -g)
 
 function is_bin_in_path {
@@ -62,8 +62,15 @@ if is_bin_in_path opam; then
   eval $(opam env)
 fi
 
-export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
-export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+source ~/.env
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/sagar/.lmstudio/bin"
+
+# Added by Windsurf
+export PATH="/Users/sagar/.codeium/windsurf/bin:$PATH"
