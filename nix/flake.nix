@@ -10,12 +10,16 @@
   outputs = inputs@{ self, nix-darwin, nixpkgs }:
   let
     configuration = { pkgs, ... }: {
-      # allow broken packages
       environment.systemPackages = let
           packageList = builtins.fromJSON (builtins.readFile ./packages.json);
           packageObjs = map (name: pkgs.${name}) packageList;
         in
           packageObjs;
+
+      fonts.packages = [
+        pkgs.nerd-fonts.iosevka
+      ];
+
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
 

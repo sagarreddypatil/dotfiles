@@ -13,5 +13,6 @@
   "fastfetch",
   "poppler_utils",
   "uv",
-  "cargo"
+  "cargo",
+  "git-lfs"
 ]
