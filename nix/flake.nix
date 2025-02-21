@@ -10,21 +10,12 @@
   outputs = inputs@{ self, nix-darwin, nixpkgs }:
   let
     configuration = { pkgs, ... }: {
-      # List packages installed in system profile. To search by name, run:
-      # $ nix-env -qaP | grep wget
-      environment.systemPackages =
-        [ pkgs.vim
-          pkgs.git
-          pkgs.neovim
-          pkgs.yabai
-          pkgs.skhd
-          pkgs.btop
-          pkgs.ripgrep
-          pkgs.sccache
-          pkgs.python3
-          pkgs.yadm
-        ];
-
+      # allow broken packages
+      environment.systemPackages = let
+          packageList = builtins.fromJSON (builtins.readFile ./packages.json);
+          packageObjs = map (name: pkgs.${name}) packageList;
+        in
+          packageObjs;
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
 

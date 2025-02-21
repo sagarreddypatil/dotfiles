@@ -1,0 +1,17 @@
+[
+  "vim",
+  "git",
+  "neovim",
+  "yabai",
+  "skhd",
+  "btop",
+  "ripgrep",
+  "sccache",
+  "python3",
+  "yadm",
+  "ncdu",
+  "fastfetch",
+  "poppler_utils",
+  "uv",
+  "cargo"
+]

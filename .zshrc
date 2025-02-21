@@ -48,29 +48,9 @@ function is_bin_in_path {
 }
 
 is_bin_in_path nvim && alias vim=nvim
-
-if is_bin_in_path opam; then
-  # BEGIN opam configuration
-  # This is useful if you're using opam as it adds:
-  #   - the correct directories to the PATH
-  #   - auto-completion for the opam binary
-  # This section can be safely removed at any time if needed.
-  
-  [[ ! -r '/home/sagar/.opam/opam-init/init.zsh' ]] || source '/home/sagar/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
-  # END opam configuration
-  
-  eval $(opam env)
-fi
-
 source ~/.env
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/sagar/.lmstudio/bin"
+alias pack="~/nix/pack"
 
-# Added by Windsurf
-export PATH="/Users/sagar/.codeium/windsurf/bin:$PATH"

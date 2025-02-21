@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# make cwd the directory of the script
+cd "$(dirname "$0")"
+
+uv run nix-package-manager.py "$@"
