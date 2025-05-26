@@ -3,12 +3,13 @@ autoload -U compinit && compinit
 autoload -U select-word-style
 select-word-style bash
 
-HISTFILE=~/.zsh_history
-SAVEHIST=1000000
-HISTSIZE=1000000
+HISTFILE=$HOME/.zsh_history        # 1 file, no rotation
+HISTSIZE=1000000000                # in-memory events (use -1 for true “no limit”)
+SAVEHIST=$HISTSIZE                 # same on disk
 
-setopt extended_history       # record timestamp of command in HISTFILE
-setopt SHARE_HISTORY
+setopt EXTENDED_HISTORY            # “: epoch:duration;” header per entry
+setopt INC_APPEND_HISTORY          # write each command instantly
+setopt APPEND_HISTORY              # never clobber the file
 
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
@@ -36,7 +37,6 @@ bindkey "^[[1;3D" backward-word
 alias yay='paru'
 
 export PATH=$HOME/.local/bin:$PATH
-export RUSTC_WRAPPER=$(which sccache)
 # export NODE_PATH=$(npm root --quiet -g)
 
 function is_bin_in_path {
@@ -54,3 +54,7 @@ source ~/.env
 export PATH="$PATH:/Users/sagar/.lmstudio/bin"
 alias pack="~/nix/pack"
 
+export PATH="/Applications/Racket v8.16/bin:$PATH"
+alias ssh="TERM=xterm-256color ssh"
+
+export PATH="/opt/homebrew/bin:$PATH"
