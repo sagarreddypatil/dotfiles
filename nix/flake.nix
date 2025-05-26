@@ -11,30 +11,23 @@
   let
     configuration = { pkgs, ... }: {
       environment.systemPackages = let
-          packageList = builtins.fromJSON (builtins.readFile ./packages.json);
-          packageObjs = map (name: pkgs.${name}) packageList;
-        in
-          packageObjs;
+        packageList = builtins.fromJSON (builtins.readFile ./packages.json);
+        packageObjs  = map (name: pkgs.${name}) packageList;
+      in
+        packageObjs;
 
       fonts.packages = [
         pkgs.nerd-fonts.iosevka
       ];
 
-      # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
-
-      # Enable alternative shell support in nix-darwin.
-      # programs.fish.enable = true;
       programs.zsh.enable = true;
-
-      # Set Git commit hash for darwin-version.
       system.configurationRevision = self.rev or self.dirtyRev or null;
 
       # Used for backwards compatibility, please read the changelog before changing.
       # $ darwin-rebuild changelog
       system.stateVersion = 6;
 
-      # The platform the configuration will be used on.
       nixpkgs.hostPlatform = "aarch64-darwin";
     };
   in

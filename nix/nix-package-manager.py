@@ -30,53 +30,55 @@ def main():
 
 
 @main.command()
-@click.argument("name")
-def add(name: str):
+@click.argument("names", nargs=-1)
+def add(names: tuple[str, ...]):
+    original = load()
     packages = load()
 
-    if name in packages:
-        eprint(f"Package '{name}' already installed")
-        sys.exit(1)
+    for name in names:
+        if name in packages:
+            eprint(f"Package '{name}' already installed")
+            sys.exit(1)
 
-    ret = os.system(f"nix search nixpkgs#{name} ^")
-    if ret != 0:
-        sys.exit(1)
+    for name in names:
+        ret = os.system(f"nix search nixpkgs#{name} ^")
+        if ret != 0:
+            sys.exit(1)
+        packages.append(name)
 
-    packages.append(name)
     save(packages)
 
     ret = darwin_rebuild()
     if ret != 0:
-        eprint("Failed to install package, rebuild failed")
-
-        packages.pop()
-        save(packages)
+        eprint("Failed to install package(s), rebuild failed")
+        save(original)
         sys.exit(1)
 
-    print(f"\nPackage '{name}' installed")
+    print(f"\nPackage(s) {', '.join(names)} installed")
 
 
 @main.command()
-@click.argument("name")
-def remove(name: str):
+@click.argument("names", nargs=-1)
+def remove(names: tuple[str, ...]):
+    original = load()
     packages = load()
 
-    if name not in packages:
-        eprint(f"Package '{name}' is not installed")
-        sys.exit(1)
+    for name in names:
+        if name not in packages:
+            eprint(f"Package '{name}' is not installed")
+            sys.exit(1)
 
-    packages.remove(name)
+    for name in names:
+        packages.remove(name)
     save(packages)
 
     ret = darwin_rebuild()
     if ret != 0:
         eprint("Failed to remove package, rebuild failed")
-
-        packages.append(name)
-        save(packages)
+        save(original)
         sys.exit(1)
 
-    print(f"\nPackage '{name}' removed")
+    print(f"\nPackage {', '.join(names)} removed")
 
 
 @main.command()
