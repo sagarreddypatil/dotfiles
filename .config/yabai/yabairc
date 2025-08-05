@@ -22,7 +22,7 @@ yabai -m config mouse_action2 resize
 
 # focus follows mouse, auto raise = bring to front
 yabai -m config focus_follows_mouse autoraise
-yabai -m config mouse_follows_focus off
+yabai -m config mouse_follows_focus on
 
 # show shadows only for floating windows
 yabai -m config window_shadow float

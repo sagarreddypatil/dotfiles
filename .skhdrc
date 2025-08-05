@@ -1,66 +1,67 @@
 
-# cmd + n to switch to space n
+# alt + n to switch to space n
 
-cmd - 1 : yabai -m space --focus 1
-cmd - 2 : yabai -m space --focus 2
-cmd - 3 : yabai -m space --focus 3
-cmd - 4 : yabai -m space --focus 4
-cmd - 5 : yabai -m space --focus 5
-cmd - 6 : yabai -m space --focus 6
-cmd - 7 : yabai -m space --focus 7
-cmd - 8 : yabai -m space --focus 8
-cmd - 9 : yabai -m space --focus 9
-cmd - 0 : yabai -m space --focus 10
+alt - 1 : yabai -m space --focus 1
+alt - 2 : yabai -m space --focus 2
+alt - 3 : yabai -m space --focus 3
+alt - 4 : yabai -m space --focus 4
+alt - 5 : yabai -m space --focus 5
+alt - 6 : yabai -m space --focus 6
+alt - 7 : yabai -m space --focus 7
+alt - 8 : yabai -m space --focus 8
+alt - 9 : yabai -m space --focus 9
+alt - 0 : yabai -m space --focus 10
 
-# cmd + shift + n to move window to space n
+# alt + shift + n to move window to space n
 
-cmd + shift - 1 : yabai -m window --space 1
-cmd + shift - 2 : yabai -m window --space 2
-cmd + shift - 3 : yabai -m window --space 3
-cmd + shift - 4 : yabai -m window --space 4
-cmd + shift - 5 : yabai -m window --space 5
-cmd + shift - 6 : yabai -m window --space 6
-cmd + shift - 7 : yabai -m window --space 7
-cmd + shift - 8 : yabai -m window --space 8
-cmd + shift - 9 : yabai -m window --space 9
-cmd + shift - 0 : yabai -m window --space 10
+alt + shift - 1 : yabai -m window --space 1
+alt + shift - 2 : yabai -m window --space 2
+alt + shift - 3 : yabai -m window --space 3
+alt + shift - 4 : yabai -m window --space 4
+alt + shift - 5 : yabai -m window --space 5
+alt + shift - 6 : yabai -m window --space 6
+alt + shift - 7 : yabai -m window --space 7
+alt + shift - 8 : yabai -m window --space 8
+alt + shift - 9 : yabai -m window --space 9
+alt + shift - 0 : yabai -m window --space 10
 
-# cmd tab goes to previous space
-cmd - tab : yabai -m space --focus recent
+# alt tab goes to previous space
+alt - tab : yabai -m space --focus recent
 
 
-# cmd + space for tiling/floating mode
+# alt + space for tiling/floating mode
 alt - space : yabai -m window --toggle float; sh -c 'cd ~/.config/yabai/float_smaller; cargo run --release'
 
-# cmd + shift + r to reload yabai config
+# alt + shift + r to reload yabai config
 alt + shift - r : yabai --restart-service && sketchybar --reload
 
-# cmd + enter to open terminal
+# alt + enter to open terminal
 # run `tell application "iTerm" to create window with default profile; activate` in applescript
-# cmd - return : ~/.config/yabai/open_iterm.sh
+# alt - return : ~/.config/yabai/open_iterm.sh
+# cmd - return : ~/.config/yabai/open_wezterm.sh
 cmd - return : ~/.config/yabai/open_kitty.sh
 
-# cmd + shift + left/right/up/down to move window
+# alt + shift + left/right/up/down to move window
 cmd + shift - left : yabai -m window --warp west
 cmd + shift - right : yabai -m window --warp east
 cmd + shift - up : yabai -m window --warp north
 cmd + shift - down : yabai -m window --warp south
 
-# cmd + left/right/up/down to focus window
+# alt + left/right/up/down to focus window
 cmd - left : yabai -m window --focus west
 cmd - right : yabai -m window --focus east
 cmd - up : yabai -m window --focus north
 cmd - down : yabai -m window --focus south
 
 # also for hjkl
-# cmd + shift - h : yabai -m window --warp west
-# cmd + shift - l : yabai -m window --warp east
-# cmd + shift - k : yabai -m window --warp north
-# cmd + shift - j : yabai -m window --warp south
+# alt + shift - h : yabai -m window --warp west
+# alt + shift - l : yabai -m window --warp east
+# alt + shift - k : yabai -m window --warp north
+# alt + shift - j : yabai -m window --warp south
 
 # alt + s: screenshot to clipboard, selection
 alt - s : screencapture -i -c
 
-# cmd + e: toggle split direction
-cmd - e : yabai -m window --toggle split
+# alt + e: toggle split direction
+alt - e : yabai -m window --toggle split
 
