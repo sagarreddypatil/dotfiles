@@ -13,6 +13,7 @@ setopt APPEND_HISTORY              # never clobber the file
 
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+source $HOME/.zsh/zsh-fzf-history-search/zsh-fzf-history-search.zsh
 
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
@@ -58,3 +59,5 @@ export PATH="/Applications/Racket v8.16/bin:$PATH"
 alias ssh="TERM=xterm-256color ssh"
 
 export PATH="/opt/homebrew/bin:$PATH"
+export PKG_CONFIG_PATH="$HOMEBREW_PREFIX/lib/pkgconfig"
+
