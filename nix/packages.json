@@ -28,5 +28,8 @@
   "libwebp",
   "nmap",
   "imagemagick",
-  "android-tools"
+  "backblaze-b2",
+  "exiftool",
+  "zig",
+  "ninja"
 ]
