@@ -51,13 +51,10 @@ function is_bin_in_path {
 is_bin_in_path nvim && alias vim=nvim
 source ~/.env
 
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/sagar/.lmstudio/bin"
 alias pack="~/nix/pack"
 
-export PATH="/Applications/Racket v8.16/bin:$PATH"
-alias ssh="TERM=xterm-256color ssh"
-
-export PATH="/opt/homebrew/bin:$PATH"
-export PKG_CONFIG_PATH="$HOMEBREW_PREFIX/lib/pkgconfig"
+if [[ $(uname) == "Darwin" ]]; then
+  export PATH="/opt/homebrew/bin:$PATH"
+  export PKG_CONFIG_PATH="$HOMEBREW_PREFIX/lib/pkgconfig"
+fi
 
