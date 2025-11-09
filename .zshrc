@@ -51,9 +51,9 @@ function is_bin_in_path {
 is_bin_in_path nvim && alias vim=nvim
 source ~/.env
 
-alias pack="~/nix/pack"
 
 if [[ $(uname) == "Darwin" ]]; then
+  alias pack="~/nix/pack"
   export PATH="/opt/homebrew/bin:$PATH"
   export PKG_CONFIG_PATH="$HOMEBREW_PREFIX/lib/pkgconfig"
 fi

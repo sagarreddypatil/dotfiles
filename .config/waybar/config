@@ -17,9 +17,7 @@
 		// "temperature",
 		// "cpu",
 		// "memory",
-		"battery",
 		"pulseaudio",
-		"backlight",
 		"idle_inhibitor",
 		"custom/night",
 		"tray"

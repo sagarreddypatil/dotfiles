@@ -1,7 +1,9 @@
+output HDMI-A-2 mode 3440x1440@180Hz
+
 exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
-exec swaybg --image $HOME/Pictures/GrandCanyon.jpg
+exec swaybg --image $HOME/Pictures/golden-gate-bridge.jpg --mode fill
 
 exec $HOME/.config/sway/sunset.py
 
@@ -71,7 +73,7 @@ floating_modifier $win
 bindsym $win+e exec nemo
 
 # start a terminal
-bindsym $win+Return exec foot
+bindsym $win+Return exec kitty
 
 # kill focused window
 bindsym $win+q kill
