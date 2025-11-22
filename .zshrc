@@ -34,6 +34,8 @@ source "$HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$HOME/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
 source "$HOME/.zsh/zsh-fzf-history-search/zsh-fzf-history-search.zsh"
 
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
 fpath+=($HOME/.zsh/pure)
 autoload -U promptinit; promptinit
 prompt pure
