@@ -53,5 +53,5 @@ def location():
 
 lat, lng = location()
 
-# # run wlsunset
+# run wlsunset
 os.system(f"wlsunset -l {lat} -L {lng} -t 3000 &")
