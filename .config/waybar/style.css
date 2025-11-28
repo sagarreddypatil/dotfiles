@@ -31,7 +31,7 @@ window#waybar {
 #workspaces button {
   padding: 0 4px;
   margin: 0px;
-  background: transparent;
+  background: #000000;
   color: #ffffff;
   font-weight: bold;
 }
@@ -41,7 +41,7 @@ window#waybar {
   text-shadow: inherit;
 }
 
-#workspaces button.focused {
+#workspaces button.visible {
   background: #ffffff;
   color: #000000;
 }

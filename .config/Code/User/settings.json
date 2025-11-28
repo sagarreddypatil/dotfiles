@@ -56,4 +56,5 @@
     "workbench.secondarySideBar.defaultVisibility": "hidden",
     "workbench.sideBar.location": "right",
     "workbench.startupEditor": "welcomePage",
+    "claudeCode.selectedModel": "opus",
 }

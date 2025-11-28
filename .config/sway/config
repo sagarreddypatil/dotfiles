@@ -23,10 +23,6 @@ gaps outer 0
 gaps inner 5
 smart_gaps on
 
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
@@ -38,25 +34,13 @@ exec --no-startup-id udiskie -ans
 exec --no-startup-id mako
 
 set $locker $HOME/.config/sway/lock.sh
-
-# exec swayidle -w \
-#          timeout 299 $locker \
-#          timeout 599 'swaymsg "output * dpms off"' \
-#               resume 'swaymsg "output * dpms on"' \
-#          before-sleep $locker
-
 bindsym $win+l exec $locker
-
 
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
-
-# brightness settings
-bindsym XF86MonBrightnessUp exec xbacklight -inc 1
-bindsym XF86MonBrightnessDown exec xbacklight -dec 1
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -75,7 +59,6 @@ bindsym $win+Return exec alacritty
 
 # kill focused window
 bindsym $win+q kill
-# bindsym $alt+F4      kill
 
 # alt + tab but it's actually win + tab
 bindsym $win+Tab workspace back_and_forth
@@ -104,16 +87,8 @@ bindsym $win+h split h
 # split in vertical orientation
 bindsym $win+v split v
 
-# change container layout (stacked, tabbed, toggle split)
-# bindsym $mod+s layout stacking
-# bindsym $mod+w layout tabbed
-# bindsym $mod+e layout toggle split
-
 # toggle tiling / floating
 bindsym $win+space floating toggle
-
-# toggle sticky
-bindsym $mod+s+space sticky toggle
 
 # enter fullscreen mode for the focused container
 bindsym $win+shift+space fullscreen toggle
@@ -174,33 +149,6 @@ bindsym $win+Shift+r reload
 # exit i3 (logs you out of your X session)
 bindsym $win+Shift+e exit
 
-# resize window (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
-}
-
-bindsym $mod+r mode "resize"
-
 exec $HOME/.config/waybar/sunset.py
 
 bar {
@@ -216,11 +164,6 @@ assign [class="^Teams$"] $ws7
 assign [class="^Slack$"] $ws8
 assign [class="^discord$"] $ws9
 assign [class="^Spotify$"] $ws10
-
-# exec --no-startup-id firefox
-# exec --no-startup-id slack
-# exec --no-startup-id discord
-# exec --no-startup-id spotify
 
 # cliphist - clipboard history manager
 # exec --no-startup-id wl-paste --watch cliphist store
